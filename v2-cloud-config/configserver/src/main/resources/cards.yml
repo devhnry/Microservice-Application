@@ -1,0 +1,10 @@
+build:
+  version: "3.0"
+
+cards:
+  message: "Welcome to MicroService Bank App ...local Card Api"
+  contactDetails:
+    name: Henry Taiwo - HT
+    email: taiowh782@gmail.com
+  onCallSupport:
+    - +(234)8 159 602 684

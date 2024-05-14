@@ -1,0 +1,10 @@
+build:
+  version: "2.0"
+
+cards:
+  message: "Welcome to MicroService Bank App ...Card QA Api"
+  contactDetails:
+    name: Henry Taiwo - Tester
+    email: taiowh287@gmail.com
+  onCallSupport:
+    - +(234)8 159 602 686

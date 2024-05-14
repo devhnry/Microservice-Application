@@ -14,8 +14,27 @@ spring:
     hibernate:
       ddl-auto: update
     database-platform: org.hibernate.dialect.H2Dialect
+  config:
+    import:
+      - "application_prod.yml"
+      - "application_qa.yml"
+  profiles:
+    active:
+      - "qa"
+
 server:
   port: 8090
 springdoc:
   swagger-ui:
     path: /swagger-ui.html
+
+build:
+  version: "3.0"
+
+loans:
+  message: "Welcome to MicroService Bank App ...local Loans Api"
+  contactDetails:
+    name: Henry Taiwo - HT
+    email: taiowh782@gmail.com
+  onCallSupport:
+    - +(234)8 159 602 684

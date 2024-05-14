@@ -5,8 +5,11 @@ import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import org.microservicebank.loans.constants.LoanConstants;
 import org.microservicebank.loans.dto.LoanDto;
+import org.microservicebank.loans.dto.LoansContactInfoDto;
 import org.microservicebank.loans.dto.ResponseDto;
 import org.microservicebank.loans.service.ILoanService;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -15,11 +18,22 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "/api", produces = {MediaType.APPLICATION_JSON_VALUE})
-@AllArgsConstructor
 @Validated
 public class LoanController {
 
     private ILoanService loanService;
+    private final Environment environment;
+    private final LoansContactInfoDto loansContactInfoDto;
+
+    public LoanController(ILoanService loanService, Environment environment, LoansContactInfoDto loansContactInfoDto) {
+        this.loanService = loanService;
+        this.environment = environment;
+        this.loansContactInfoDto = loansContactInfoDto;
+    }
+
+    @Value("${build.version}")
+    private String buildVersion;
+
 
     @PostMapping("/create")
     public ResponseEntity<ResponseDto> createLoan(@RequestParam @Pattern(regexp = "(^$|[0-9]{10})",
@@ -68,5 +82,24 @@ public class LoanController {
         }
     }
 
+    @GetMapping("/build-info")
+    public ResponseEntity<String> getBuildInfo(){
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(buildVersion);
+    }
 
+    @GetMapping("/java-version")
+    public ResponseEntity<String> getJavaVersion(){
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(environment.getProperty("java.version"));
+    }
+
+    @GetMapping("/contact-info")
+    public ResponseEntity<LoansContactInfoDto> getContactDetails(){
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(loansContactInfoDto);
+    }
 }

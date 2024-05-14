@@ -34,9 +34,4 @@ public class AccountsApplication {
     public static void main(String[] args) {
         SpringApplication.run(AccountsApplication.class, args);
     }
-
-//    @Bean
-//    public String string(){
-//        return new String();
-//    }
 }

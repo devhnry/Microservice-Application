@@ -1,0 +1,37 @@
+services:
+  accounts:
+    image: devhnry/account:v1
+    container_name: accounts-ms
+    ports:
+      - "8080:8080"
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    networks:
+      - devhnry
+  cards:
+    image: devhnry/cards:v1
+    container_name: card-ms
+    ports:
+      - "9000:9000"
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    networks:
+      - devhnry
+  loans:
+    image: devhnry/loans:v1
+    container_name: loans-ms
+    ports:
+      - "8090:8090"
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    networks:
+      - devhnry
+networks:
+  devhnry:
+    driver: "bridge"

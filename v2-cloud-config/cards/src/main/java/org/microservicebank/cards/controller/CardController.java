@@ -32,9 +32,6 @@ public class CardController {
         this.cardContactInfoDto = cardContactInfoDto;
     }
 
-    @Value("${build.version}")
-    private String buildVersion;
-
     @PostMapping("/create")
     public ResponseEntity<ResponseDTO> createCard(@RequestParam
                                                       @Pattern(regexp = "(^$|[0-9]{10})",
@@ -91,7 +88,7 @@ public class CardController {
     public ResponseEntity<String> getBuildInfo(){
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(buildVersion);
+                .body(environment.getProperty("build.version"));
     }
 
     @GetMapping("/java-version")

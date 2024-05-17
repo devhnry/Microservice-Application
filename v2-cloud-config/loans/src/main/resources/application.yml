@@ -1,6 +1,12 @@
+server:
+  port: 8090
+
 spring:
   application:
     name: "loans"
+  profiles:
+    active:
+      - "prod"
   datasource:
     username: root
     password: ''
@@ -15,23 +21,4 @@ spring:
       ddl-auto: update
     database-platform: org.hibernate.dialect.H2Dialect
   config:
-    import:
-      - "application_qa.yml"
-      - "application_prod.yml"
-  profiles:
-    active:
-      - "qa"
-
-server:
-  port: 8090
-
-build:
-  version: "3.0"
-
-loans:
-  message: "Welcome to MicroService Bank App ...local Loans Api"
-  contactDetails:
-    name: Henry Taiwo - HT
-    email: taiowh782@gmail.com
-  onCallSupport:
-    - +(234)8 159 602 684
+    import: "configserver:http://localhost:8071/"

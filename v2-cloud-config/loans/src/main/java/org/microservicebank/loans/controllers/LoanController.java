@@ -31,9 +31,6 @@ public class LoanController {
         this.loansContactInfoDto = loansContactInfoDto;
     }
 
-    @Value("${build.version}")
-    private String buildVersion;
-
 
     @PostMapping("/create")
     public ResponseEntity<ResponseDto> createLoan(@RequestParam @Pattern(regexp = "(^$|[0-9]{10})",
@@ -86,7 +83,7 @@ public class LoanController {
     public ResponseEntity<String> getBuildInfo(){
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(buildVersion);
+                .body(environment.getProperty("build.version"));
     }
 
     @GetMapping("/java-version")

@@ -32,9 +32,6 @@ public class AccountsController {
         this.environment = environment;
     }
 
-    @Value("${build.version}")
-    private String buildVersion;
-
     @PostMapping("/create")
     public ResponseEntity<ResponseDTO> createAccount(@Valid @RequestBody CustomerDTO customerDTO){
         accountsService.createAccount(customerDTO);
@@ -88,7 +85,7 @@ public class AccountsController {
     public ResponseEntity<String> getBuildInfo(){
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(buildVersion);
+                .body(environment.getProperty("build.version"));
     }
 
     @GetMapping("/java-version")

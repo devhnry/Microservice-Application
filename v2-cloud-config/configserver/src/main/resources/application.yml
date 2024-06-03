@@ -7,11 +7,19 @@ spring:
     config:
       server:
         git:
-          uri: "https://github.com/eazybytes/eazybytes-config.git"
+          uri: "https://github.com/devhnry/eazybytes-config.git"
           default-label: main
           timeout: 5
           clone-on-start: true
           force-pull: true
+  rabbitmq:
+    host: "localhost"
+    port: 5672
+    username: "guest"
+    password: "guest"
+
 server:
   port: 8071
 
+encrypt:
+  key: "43EF345KF56495KDM05440T"

@@ -1,10 +1,8 @@
-### README File 1: Dockerizing Account Service
-
 # Banking System Microservices
 
 ## Overview
 
-This project demonstrates how to separate a banking system into three distinct microservices: Loan, Account, and Card. The primary focus is on dockerizing the Account service for learning and understanding property files in a microservices architecture.
+This project demonstrates how to separate a banking system into three distinct microservices: Loan, Account, and Card. The primary focus is on dockerizing the Account service for learning and understanding property files in a microservices architecture. Followed by a Course I was taking.
 
 ## Microservices
 
